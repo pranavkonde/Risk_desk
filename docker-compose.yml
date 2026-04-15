@@ -1,0 +1,11 @@
+# Compose reads a project `.env` for ${VAR} substitution only; copy `.env.example` → `.env` if needed.
+services:
+  riskdesk:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      PACIFICA_NETWORK: ${PACIFICA_NETWORK:-testnet}
+      PACIFICA_ACCOUNT: ${PACIFICA_ACCOUNT:-}
+      PACIFICA_REST_URL: ${PACIFICA_REST_URL:-}
+    restart: unless-stopped
